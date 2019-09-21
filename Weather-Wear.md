@@ -27,8 +27,7 @@ what is the app going to:
 10. ?? moduls ??
 11. better to input city and get response rather than locator
 
-achieve MVP:  1,2,3  
-
+achieve MVP:  1,2,3  statu
 1. landing page: casual user
 enter your location
 enter your clothing style
