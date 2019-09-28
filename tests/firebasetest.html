@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Weather-wear questionnaire!</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    
+
+    <div class="container">
+
+        <br>
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="text-center">Personalize your predictions!</h1>
+        </div>
+        <div class="row">
+
+            <!-- Sign-Up Card-->
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        Tell us about you
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">What is your name?</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="email-input">What is your email?</label>
+                                <input class="form-control" id="email-input" type="email">
+                            </div>
+                            <div class="form-group row">
+                                <label for="birthday-input">When is your birthday?</label>
+                                <input class="form-control" id="birthday-input" type="date">
+                            </div>
+                            <div class="form-group row">
+                                <label for="zip-input">What is your home zip code?</label>
+                                <input class="form-control" id="zip-input" type="number">
+                            </div>
+
+                            <div class="radio">
+                                <label for="commute-input">What is your commute like?</label>
+                            </div>
+                            <div class="form-check">
+                              <span> <input class="form-check-input" type="radio" name="commute" id="gridRadios1"
+                                    value="N/A">
+                                <label class="form-check-label" for="gridRadios1">
+                                    N/A
+                                </label>
+                            </div>
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="commute" id="gridRadios2"
+                                        value="Public transit">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Public transit
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="commute" id="gridRadios3"
+                                            value="Personal vehicle">
+                                        <label class="form-check-label" for="gridRadios3">
+                                            Personal vehicle
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="commute" id="gridRadios4"
+                                                value="I walk">
+                                            <label class="form-check-label" for="gridRadios4">
+                                                I walk
+                                            </label>
+                                        </div>
+
+                            <div class="radio">
+                                <label for="run-input">Do you tend to run hot or cold?</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="run" id="gridRadiosX1"
+                                    value="Hot">
+                                <label class="form-check-label" for="gridRadiosX1">
+                                    Hot
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="run" id="gridRadiosX2"
+                                        value="Cold">
+                                    <label class="form-check-label" for="gridRadiosX2">
+                                        Cold
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="run" id="gridRadiosX3"
+                                            value="Neither">
+                                        <label class="form-check-label" for="gridRadiosX3">
+                                           Neither
+                                        </label>
+                                    </div>
+
+                            <div class="form-group row">
+                                <label for="comment-input">How did you hear about us?</label>
+                                <textarea class="form-control" id="comment-input" rows="5"></textarea>
+                            </div>
+                            <button class="btn btn-default" id="add-user" type="submit" onclick="displayRadioValue()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Most Recent Member Card -->
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        Your answers
+                    </div>
+                    <div class="card-body" id="recent-member">
+                        <h2 id="name-display">Jimmy John</h2>
+                        <h4 id="email-display">Email: jimmy@john.edu</h4>
+                        <h4 id="birthday-display">Age: 27</h4>
+                        <h4 id="zip-display">19446</h4>
+                        <h4 id="commute-display">I walk</h4>
+                        <h4 id="run-display">hot</h4>
+                        <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p> 
+            Select a radio button and click on Submit. 
+        </p> 
+          
+        Gender: 
+        <input type="radio" name="Gender" value="Male">Male 
+        <input type="radio" name="Gender" value="Female">Female 
+        <input type="radio" name="Gender" value="Others">Others 
+          
+        <br> 
+          
+        Food Preference: 
+        <input type="radio" name="Food" value="Vegetarian">Vegetarian 
+        <input type="radio" name="Food" value="Non-Vegetarian">Non-Vegetarian 
+          
+        <br> 
+          
+        <button type="button" onclick="displayRadioValue()"> 
+            Submit 
+        </button> 
+          
+        <br> 
+          
+        <div id="result"></div> 
+          
+      
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script> 
+    $(document).on("click", ".form-check-input", function(e){
+        
+    })
+            function displayRadioValue() { 
+              
+                // if(document.getElementById("gridRadios1").checked){
+                //     commute = $("#gridRadios1").val().trim();
+                // }
+                // else if (document.getElementById("gridRadios2").checked){
+                //     commute = $("#gridRadios2").val().trim();
+                // }
+                // else if (document.getElementById("gridRadios3").checked){
+                //     commute = $("#gridRadios3").val().trim();
+                // }
+                // else if (document.getElementById("gridRadios4").checked){
+                //     commute = $("#gridRadios4").val().trim();
+                }
+
+
+                
+                // document.getElementById("result").innerHTML = ""; 
+                // var ele = document.getElementsByTagName('input'); 
+                //   console.log(ele)
+                // // for(i = 0; i < ele.length; i++) { 
+                //       console.log(ele[i].type)
+                //       console.log(ele[i].name)
+                //       console.log(ele[i].value)
+                //     if((ele[i].type="radio") && 
+                      
+                //         (ele[i].checked)) {
+                            
+                //             document.getElementById("result").innerHTML 
+                //                     += ele[i].name + " Value: " 
+                //                     + ele[i].value + "<br>"; 
+                //     } 
+                
+            // if (ele[i].type="text") {i+}    
+            
+             
+        </script> 
+
+    <!-- LINKS FOR FIREBASE GO HERE -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+   
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script> -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDp6fG4do2N1EU37zD-pZRV0jatGPFZ_Qw",
+            authDomain: "weather-wear-76e8c.firebaseapp.com",
+            databaseURL: "https://weather-wear-76e8c.firebaseio.com",
+            projectId: "weather-wear-76e8c",
+            storageBucket: "weather-wear-76e8c.appspot.com",
+            messagingSenderId: "108370961630",
+            appId: "1:108370961630:web:bb265646fec9c37f1c8e4f",
+            measurementId: "G-2RFBY0VJKQ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //   firebase.analytics();
+
+
+        // Create a variable to reference the database
+        var database = firebase.database();
+
+        // Initial Values
+        var name = "";
+        var email = "";
+        var birthday = 0;
+        var zip = 0;
+        var commute = "";
+        var run = "";
+        var comment = "";
+
+        // Capture Button Click
+        $("#add-user").on("click", function (event) {
+            // Don't refresh the page!
+            event.preventDefault();
+
+
+            // YOUR TASK!!!
+            // Code in the logic for storing and retrieving the most recent user.
+            // Don't forget to provide initial data to your Firebase database.
+            name = $("#name-input").val().trim();
+            email = $("#email-input").val().trim();
+            birthday = $("#birthday-input").val().trim();
+            zip = $("#zip-input").val().trim();
+            // commute = $("#commute-input").val().trim();
+            // run = $("#run-input").val().trim();
+            comment = $("#comment-input").val().trim();
+
+            document.querySelectorAll('.form-check-input').forEach(function(element) {
+                if(element.checked) {
+
+                    if(element.name === "commute") {
+                        commute = element.value;
+                    
+                    }
+
+                    if(element.name === "run") {
+                        run = element.value;
+                    }
+                    
+                }
+            });
+
+
+            database.ref("/surveys").push({
+                name: name,
+                email: email,
+                birthday: birthday,
+                zip: zip,
+                comment: comment,
+                commute: commute,
+                run: run
+            });
+
+        });
+
+        // Firebase watcher + initial loader HINT: .on("value")
+        database.ref("/surveys").on("value", function (snapshot) {
+
+            // Log everything that's coming out of snapshot
+            console.log(snapshot.val());
+            const surveys = snapshot.val();
+            const key = snapshot.key;
+
+            Object.values(surveys).forEach(function(survey) {
+                console.log(survey);
+                console.log(survey.name);
+                console.log(survey.email);
+                console.log(survey.birthday);
+                console.log(survey.zip);
+                console.log(survey.commute);
+                console.log(survey.run);
+                console.log(survey.comment);
+
+                $("#name-display").text(survey.name);
+                $("#email-display").text(survey.email);
+                $("#birthday-display").text(survey.birthday);
+                $("#zip-display").text(survey.zip);
+                $("#commute-display").text(survey.commute);
+                $("#run-display").text(survey.run);
+                $("#comment-display").text(survey.comment);
+            })
+            
+            Object.entries(surveys).forEach(function(survey) {
+                console.log(survey);
+                console.log(survey[0]);
+                console.log(survey[1].name);
+                console.log(survey[1].email);
+                console.log(survey[1].birthday);
+                console.log(survey[1].zip);
+                console.log(survey[1].commute);
+                console.log(survey[1].run);
+                console.log(survey[1].comment);
+                
+            })
+
+            
+
+            // Change the HTML to reflect
+            
+
+            // Handle the errors
+        },
+            function (errorObject) {
+                console.log("Errors handled: " + errorObject.code);
+            }
+        );
+
+    </script>
+
+    
+
+</body>
+
+</html>
