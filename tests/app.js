@@ -1,20 +1,3 @@
-// var access_key = "592b7b524e63b0d36848758300ca2283";
-// var query = "New York"
-// var queryURL = "http://api.weatherstack.com/current?access_key=" + access_key + "&query=" + query;
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   })
-// We store all of the retrieved data inside of an object called "response"
-// .then(function(response) {
-
-// Log the queryURL
-//   console.log(queryURL);
-
-// Log the resulting object
-//   console.log(response);})
-// Current Weather API Endpoint
 
 // This is our API key
 var APIKey = "52e745084f07c32ae3a4b4ccd34672b9";
