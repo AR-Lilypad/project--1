@@ -1,1 +1,2 @@
 # project--1
+firebasetest.html and survey.js should have most of what you need. you will see how i currently have the information generated on "submit" filling two different cards: one that shows the answers to the survey, and one that shows their weather information for a 24hr period. I have included the giphy api in the js file, but was still struggling with getting it to populate how i want. 
