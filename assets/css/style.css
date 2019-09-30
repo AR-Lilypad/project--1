@@ -10,14 +10,13 @@ body, html {
      /* Navigation bar */
 #navigation {
   background-color:#fff;
-  color: #0b0b85;
-  opacity: .9;
   list-style: none;
   text-align: right;
   width: 100%;
   margin: 0%;
   padding-top: 10px; 
   height: 60px;
+  clear: both;
   }
                
 img {
@@ -151,7 +150,7 @@ img {
     font-size:20px;
     font-weight:500;
     margin: auto auto; 
-    padding: 2px; 
+    padding-bottom: 25px; 
     }
 
 .modal-backdrop.in {
@@ -168,8 +167,8 @@ h1 {font-family:'bootleregular';color:#3f7e53;}
   background-color:#234d73;
   text-align: center;
   width: 100%;
-  margin: -22px 0px;
-  padding: 14px 0px; 
+  margin: 0 0;
+  /* padding: 14px 0px;  */
   font-family: Raleway, san-serif;
   font-size: 16px;
   color: #fff;
