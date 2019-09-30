@@ -1,8 +1,5 @@
+$(document).ready(function () {
 
-$(document).on("click", ".form-check-input", function () {
-})
-//  function displayRadioValue() {        
-//             }
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDp6fG4do2N1EU37zD-pZRV0jatGPFZ_Qw",
@@ -29,13 +26,8 @@ var commute = "";
 var run = "";
 var comment = "";
 var age;
-var gifDiv;
 var userScore = 0;
 var currentUserScore = 0;
-var rowTime = [];
-var rowImage = [];
-var rowTemp = [];
-var rowText = [];
 var setCondition = "";
 
 // Capture Button Click
@@ -67,7 +59,7 @@ $("#add-user").on("click", function (event) {
         commute: commute,
         run: run
     });
-    ajaxCall()
+    ajaxCall();
 });
 
 // Firebase watcher + initial loader HINT: .on("value")
@@ -101,24 +93,24 @@ database.ref("/surveys").on("value", function (snapshot) {
         console.log(birthday)
         console.log(convertedBirthday.diff(moment(), "years"));
         age = Math.abs(convertedBirthday.diff(moment(), "years"));
-        $("#age-display").text("Age: " + age);
-    })
-        //Customization for user
-        if (age >= 50){
-            userScore = userScore - 2;
-        }
-        if (survey.commute === "Public transit"){
-            userScore = userScore - 2;
-        } else if (survey.commute === "Personal vehicle"){
-            userScore = userScore + 2;
-        } else if (survey.commute === "I walk"){
-            userScore = userScore - 2;
-        }
-        if (survey.run === "Cold"){
-            userScore = userScore - 2;
-        } else if (survey.run === "Hot"){
-            userScore = userScore + 2;
-        }
+    });
+
+    //Customization for user
+    if (age >= 50){
+        userScore = userScore - 2;
+    }
+    if (survey.commute === "Public transit"){
+        userScore = userScore - 2;
+    } else if (survey.commute === "Personal vehicle"){
+        userScore = userScore + 2;
+    } else if (survey.commute === "I walk"){
+        userScore = userScore - 2;
+    }
+    if (survey.run === "Cold"){
+        userScore = userScore - 2;
+    } else if (survey.run === "Hot"){
+        userScore = userScore + 2;
+    }
 
     Object.entries(surveys).forEach(function (survey) {
         console.log(survey);
@@ -131,7 +123,7 @@ database.ref("/surveys").on("value", function (snapshot) {
         console.log(survey[1].run);
         console.log(survey[1].comment);
         console.log(zip)
-    })
+    });
 },
     function (errorObject) {
         console.log("Errors handled: " + errorObject.code);
@@ -162,148 +154,61 @@ function ajaxCall() {
                 console.log(results[i].main.temp)
                 var temp = results[i].main.temp;
                 var weather = results[i].weather[0].main;
-                console.log(userScore)
                 currentUserScore = 0;
                 currentUserScore = userScore + temp;
-                console.log(currentUserScore)
-                rowTemp.push(temp);
                 console.log(results[i].weather[0].main)
                 var randomDate = results[i].dt;
                 var randomFormat = "X";
                 var convertedDate = moment(randomDate, randomFormat);
                 console.log(randomDate);
-
                 console.log(convertedDate.format("MMM Do, YYYY hh:mm:ss a"))
                 var nextTime = convertedDate.format("MMM Do, YYYY hh:mm:ss a");
-                rowTime.push(nextTime);
-console.log(typeof nextTime)
-              
-                console.log(convertedDate.diff(moment(), "days"));
-//                var searchGiphy = function (weather) {
-                    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                        weather + "&api_key=ooDPmDwDsJjgy2ei3vg18DmM4ZSisk1k&limit=1";
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    }).then(function (response) {  // Storing an array of results in the results variable
-                        var results = response.data;
-//                        for (var i = 0; i < 1; i++) {
-                            // Creating a div for the gif
-                            var gifDiv = $("<div>");
-                            // Creating an image tag
-                            var gifImage = $("<img>");
-                            gifImage.addClass("gif-image");
-                            // Giving the image tag an src attribute of a proprty pulled off the
-                            // result item
-                            gifImage.attr("src", results[0].images.fixed_height.url);
-                            gifImage.attr("data-image", weather);
-                            gifDiv.append(gifImage);
-                            console.log($("data-image").val())
-                            // Prepending the giftd to the "#gifs-appear-here" div in the HTML
-                              $("#gifs-appear-here").append(gifDiv);
-//                        }
-console.log(currentUserScore)
-console.log(typeof weather)
-                            if (currentUserScore >= 70 && weather !== "Rain"){
-                                setCondition = "T-shirt and shorts";
-                                rowImage.push(gifDiv);
-                                rowText.push(setCondition);
-                            }
-                            else if (currentUserScore < 70 && weather !== "Rain"){
-                                setCondition = "Wear a sweater";
-console.log(setCondition)
-                                rowImage.push(gifDiv);
-                                rowText.push(setCondition);
-console.log(rowText)
-console.log(rowImage)
-                            }
-                            else if (currentUserScore >= 70 && weather === "Rain"){
-                                setCondition = "Bring a jacket";
-                                rowImage.push(gifDiv);
-                                rowText.push(setCondition);
-                            }        
-                            else if (currentUserScore < 70 && weather === "Rain"){
-                                setCondition = "Wear a coat and bring an umbrella";
-                                rowImage.push(gifDiv);
-                                rowText.push(setCondition);
-                            }
-                    });
-                // }
-                // console.log(searchGiphy(weather))
-                // searchGiphy(weather)
-                // Create the new row
-
-                // var newRow = $("<tr>").append(
-                //     $("<td>").text(nextTime),
-                //     $("<td>").text(temp),
-                //     $("<td>").text(weather),
-                //     // $("<td>").prepend(gifDiv[1]),
-                //     $("<td>").prepend( $("#gifs-appear-here"))
-                // );
-                // console.log(newRow)
-                // // Append the new row to the table
-                // $("#weather-table > tbody").append(newRow);
-
-console.log(rowText)
-
-            }
-console.log(rowTime)
-console.log(rowImage)
-console.log(rowTemp)
-console.log(rowText)
-            $("#weather-results").append(
-                "<tr><td>" + rowTime[0]+ "</td>" + 
-                "<td>" + rowTime[1] + "</td>" +
-                "<td>" + rowTime[2] + "</td>" +
-                "<td>" + rowTime[3] + "</td>" +
-                "<td>" + rowTime[4] + "</td>" +
-                "<td>" + rowTime[5] + "</td>" +
-                "<td>" + rowTime[6] + "</td>" +
-                "<td>" + rowTime[7] + "</td>" +
-                "<td>" + rowTime[8] + "</td>" +
-                "<td>" + rowTime[9] + "</td>" +
-                "</td></tr>");
-                $("#weather-results").append(
-                "<tr><td>" + rowImage[0] + "</td>" + 
-                "<td>" + rowImage[1] + "</td>" +
-                "<td>" + rowImage[2] + "</td>" +
-                "<td>" + rowImage[3] + "</td>" +
-                "<td>" + rowImage[4] + "</td>" +
-                "<td>" + rowImage[5] + "</td>" +
-                "<td>" + rowImage[6] + "</td>" +
-                "<td>" + rowImage[7] + "</td>" +
-                "<td>" + rowImage[8] + "</td>" +
-                "<td>" + rowImage[9] + "</td>" +
-                "</td></tr>");
-                $("#weather-results").append(
-                "<tr><td>" + rowTemp[0] + "</td>" + 
-                "<td>" + rowTemp[1] + "</td>" +
-                "<td>" + rowTemp[2] + "</td>" +
-                "<td>" + rowTemp[3] + "</td>" +
-                "<td>" + rowTemp[4] + "</td>" +
-                "<td>" + rowTemp[5] + "</td>" +
-                "<td>" + rowTemp[6] + "</td>" +
-                "<td>" + rowTemp[7] + "</td>" +
-                "<td>" + rowTemp[8] + "</td>" +
-                "<td>" + rowTemp[9] + "</td>" +
-                "</td></tr>");
-                console.log(rowText[0])
-                $("#weather-results").append(
-                "<tr><td>" + rowText[0] + "</td>" + 
-                "<td>" + rowText[1] + "</td>" +
-                "<td>" + rowText[2] + "</td>" +
-                "<td>" + rowText[3] + "</td>" +
-                "<td>" + rowText[4] + "</td>" +
-                "<td>" + rowText[5] + "</td>" +
-                "<td>" + rowText[6] + "</td>" +
-                "<td>" + rowText[7] + "</td>" +
-                "<td>" + rowText[8] + "</td>" +
-                "<td>" + rowText[9] + "</td>" +
-                "</td></tr>");
+                if (currentUserScore >= 70 && weather !== "Rain"){
+                    setCondition = "T-shirt and shorts";
+                    searchGiphy(nextTime, temp, weather, setCondition);
+                }
+                else if (currentUserScore < 70 && weather !== "Rain"){
+                    setCondition = "Wear a sweater";
+                    searchGiphy(nextTime, temp, weather, setCondition);
+                }
+                else if (currentUserScore >= 70 && weather === "Rain"){
+                    setCondition = "Bring a jacket";
+                    searchGiphy(nextTime, temp, weather, setCondition);
+                }        
+                else if (currentUserScore < 70 && weather === "Rain"){
+                    setCondition = "Wear a coat and bring an umbrella";
+                    searchGiphy(nextTime, temp, weather, setCondition);
+                }
+            };
         });
-}
+};
 
-
-
-
-
+    function searchGiphy(nextTime, temp, weather, setCondition){
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        weather + "&api_key=ooDPmDwDsJjgy2ei3vg18DmM4ZSisk1k&limit=1";
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        }).then(function (response) {  // Storing an array of results in the results variable
+            var results = response.data;
+            // Creating a div for the gif
+            var gifDiv = $("<div class=gifs>");
+            // Creating an image tag
+            var gifImage = $("<img>");
+            gifImage.addClass("gif-image");
+            // Giving the image tag an src attribute of a proprty pulled off the
+            // result item
+            gifImage.attr("src", results[0].images.fixed_height.url);
+            var timeDisplay = $("<p>").text(nextTime);
+            var tempDisplay = $("<p>").text(temp);
+            var weatherDisplay = $("<p>").text(weather);
+            var conditionDisplay = $("<p>").text(setCondition);
+            gifDiv.append(timeDisplay);
+            gifDiv.append(tempDisplay);
+            gifDiv.append(weatherDisplay);
+            gifDiv.append(conditionDisplay);
+            gifDiv.append(gifImage);
+            $("#weather-results").append(gifDiv);
+        });
+    };
+});
