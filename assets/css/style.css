@@ -110,18 +110,18 @@ img {
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 3s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 3s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .5} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .5} 
   to {opacity: 1}
 }
 
@@ -157,9 +157,7 @@ img {
     opacity: 0.9;
    }
  
- #titleLabel {
-   font-color: text-primary;
- }  
+
 
 h1 {font-family:'bootleregular';color:#3f7e53;}
 
