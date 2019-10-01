@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> WeatherWear</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Domine|Raleway:regular,medium,bold" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <!-- Top Navigation -->
+
+    <div id="navigation">
+        <a class="logo" href="index.html">
+            <img class="ww-blu" src="assets/images/ww-blue.png">
+            <img class="ww-gr" src="assets/images/ww-green.png">
+        </a>
+        <br>
+        <label for="toggle">&#9776;</label>
+        <input type="checkbox" id="toggle" />
+        <div class="menu">
+            <a href="questFirebase.html">Register</a>
+            <a href="#">Login</a>
+        </div>
+        <br>
+    </div>
+
+    <br class="clear">
+    <!-- image carousel -->
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <div class="numbertext">1</div>
+            <img src="assets/images/green.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">2</div>
+            <img src="assets/images/flowers.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3</div>
+            <img src="assets/images/autumn.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">4</div>
+            <img src="assets/images/bigMoon.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">5</div>
+            <img src="assets/images/coolWoman.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">6</div>
+            <img src="assets/images/couple.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">7</div>
+            <img src="assets/images/sunset-w-dog.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">8</div>
+            <img src="assets/images/sweden.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">9</div>
+            <img src="assets/images/BW-girl.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">10</div>
+            <img src="assets/images/pink.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">11</div>
+            <img src="assets/images/bridge.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">12</div>
+            <img src="assets/images/city-couple.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">13</div>
+            <img src="assets/images/fallPath.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">14</div>
+            <img src="assets/images/BW-man.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">15</div>
+            <img src="assets/images/sunset-yoga.jpg">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">16</div>
+            <img src="assets/images/street.jpg">
+        </div>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div id="welcome">
+        <b>
+            <h1>Welcome to Weather-Wear</h1>
+        </b>
+        <p class="welcome">Your daily weather checker and clothes selector. <br> We will help you to choose what to
+            wear before you head out of the door and throughout the day. Personal attention based on your needs and
+            profile.</p>
+
+
+        <!--Modal: Login / Register Form-->
+        <div id="register">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#popUpWindow"> Get Started
+                Here</button>
+            <div class="modal fade" id="popUpWindow">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- form header -->
+                        <div class="modal-header" style="background-color: #234d73;">
+                            <h5 class="modal-title text-white" id="titleLabel">Register Here to Create a Personal
+                                Profile</h5>
+                            <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!--  body -->
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <!-- text area or input field, checkbox, radio buttons, etc -->
+                                    <input type="name" class="form-control" placeholder="First Name">
+                                </div>
+                                <div class="form-group">
+                                    <!-- text area or input field, checkbox, radio buttons, etc -->
+                                    <input type="name" class="form-control" placeholder="Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <!-- text area or input field, checkbox, radio buttons, etc -->
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Repeat password">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer 1 -->
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-block text-white"
+                                style="background-color: #234d73;"><a href="questFirebase.html" style="text-decoration:none; color:#fff;">Submit</a></button>
+                        </div>
+                        <!-- Modal footer 2 -->
+                        <div class="modal-footer">
+                            <div class="options text-right">
+                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                            </div>
+                            <button type="button" class="btn btn-outline-success waves-effect ml-auto text-white "
+                            style="background-color: #3f7e53;" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <!--END Modal: Login / Register Form-->
+        
+    </div>
+    
+    <br>
+    
+    <!--web footer-->
+
+    <nav class="navbar fixed-bottom navbar-dark bg-#234d73 text-white">
+        <div class="navbar-brand mx-auto"><small>Weather Wear 2019 | All Rights Reserved</small></div>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+</body>
+
+</html>
