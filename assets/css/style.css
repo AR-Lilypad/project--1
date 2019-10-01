@@ -3,20 +3,20 @@
 }
 
 body, html {
-       max-width: 1400px; 
-       margin: 0;
+       width: 100%; 
+       margin: 0 0 20px 0;
      }
 
      /* Navigation bar */
 #navigation {
   background-color:#fff;
-  color: #234d73;
-  opacity: .9;
   list-style: none;
   text-align: right;
   width: 100%;
   margin: 0%;
-  padding: 1%; 
+  padding-top: 10px; 
+  height: 60px;
+  clear: both;
   }
                
 img {
@@ -61,7 +61,7 @@ a.logo:hover img.ww-gr {
     width: 26px;
     font-size: 20px;
     line-height: 70px;
-    display: none;
+    display: none !important;
     float: right;
   }
 
@@ -82,17 +82,6 @@ img {
   margin: auto;
 }
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -102,11 +91,12 @@ img {
   top: 0;
 }
 
+
 /* The dots/bullets/indicators */
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
+  height: 5px;
+  width: 5px;
+  margin: 0 0 5px 1px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -120,18 +110,18 @@ img {
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 3s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 3s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .5} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .5} 
   to {opacity: 1}
 }
 
@@ -142,38 +132,41 @@ img {
     font-family: 'Raleway', san-serif;
     color: #3f7e53;
     width: 100%;
-    margin-top: -2%;
+    margin-bottom: -10px;
     padding: 1%;
     text-align: center;
     }
 
-@font-face {
-    font-family: 'bootle';
-    src: url(assets/fonts/BOOTLE_.TTF);
-    font-style: normal;
-    font-weight: 200;
-        }         
+    @font-face {
+      font-family: 'bootleregular';
+      src: url("../../assets/fonts/'bootle__-webfont.woff2") format('woff2'),
+           url("../../assets/fonts/bootle__-webfont.woff") format('woff');
+      font-weight: normal;
+      font-style: normal;
+   }     
                
 #register {
-    width: 15%; 
-    height: 20%;
-    background-color: #3f7e53;
-    color: #fff;
     font-family: 'Raleway', san-serif;
     font-size:20px;
     font-weight:500;
-    margin-left: 45%; 
-    padding: 2px; 
+    margin: auto auto; 
+    padding-bottom: 25px; 
     }
-        
-h1 {font-family:bootle;color:#3f7e53;}
 
-footer {
+.modal-backdrop.in {
+    opacity: 0.9;
+   }
+ 
+
+
+h1 {font-family:'bootleregular';color:#3f7e53;}
+
+.navbar {
   background-color:#234d73;
   text-align: center;
   width: 100%;
-  margin: -22px 0px;
-  padding: 14px 0px; 
+  margin: 0 0;
+  /* padding: 14px 0px;  */
   font-family: Raleway, san-serif;
   font-size: 16px;
   color: #fff;
@@ -185,7 +178,7 @@ footer {
 
   
 label {
-  display: block;
+  display: block !important;
   cursor: pointer;
   
   }
