@@ -18,10 +18,15 @@ body, html {
   height: 60px;
   clear: both;
   }
+
+  .jumbotron {
+    margin-top: 10%
+  }
+
+  
                
 img {
   display: block;
-  max-width: 80%;
   margin: 0 auto;
   }
 
@@ -56,28 +61,22 @@ a.logo:hover img.ww-gr {
   clear: right;
   }
 
-  label {
-    margin: 0 40px 0 0;
-    width: 26px;
-    font-size: 20px;
-    line-height: 70px;
-    display: none !important;
-    float: right;
-  }
-
   #toggle {
     display: none;
   }
 
 /* Image Slide Show */
 .mySlides {display: none;}
+
 img {
   vertical-align: middle;
+  max-height: 300px;
 }
 
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
+  padding-top: 100px;
   position: relative;
   margin: auto;
 }
@@ -153,6 +152,12 @@ img {
     padding-bottom: 25px; 
     }
 
+    small {
+    font-size:10px;
+    font-weight:500;
+    text-align: left
+    }
+
 .modal-backdrop.in {
     opacity: 0.9;
    }
@@ -172,17 +177,43 @@ h1 {font-family:'bootleregular';color:#3f7e53;}
   color: #fff;
   }
 
-  /* display results in columns*/
-  .container{ 
-    overflow: auto; 
-    white-space: nowrap; 
-  } 
-
-  .gifs{ 
-    display:inline-block; 
-    text-align: center; 
-    margin-right: 15px; 
+  .nav-link {
+    border: none;
+    padding: 0px 15px;      
+    border-radius: 0px;   
+    background-color: transparent;
+    display: inline-block;  
   }
+
+  .modal-link {
+    border: none;
+    padding: 0px 15px;      
+    border-radius: 0px;   
+    background-color: transparent;
+    display: inline-block;  
+    color: blue;
+  }
+
+  /* display results in columns*/
+
+  .table {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+.gifs {
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+    width: 10%;
+  }
+
+.gifs img {
+width: 200px;
+height: 200px;
+border: 0 none;
+opacity: 0.8;
+}
         
     
 /* On smaller screens, decrease text size */
@@ -215,4 +246,29 @@ label {
     font-family: 'Raleway', san-serif;
     font-size: 12px;
   }
+}
+.input-group-addon.primary {
+  color: rgb(255, 255, 255);
+  background-color: rgb(50, 118, 177);
+  border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+  color: rgb(255, 255, 255);
+  background-color: rgb(92, 184, 92);
+  border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+  color: rgb(255, 255, 255);
+  background-color: rgb(57, 179, 215);
+  border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+  color: rgb(255, 255, 255);
+  background-color: rgb(240, 173, 78);
+  border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+  color: rgb(255, 255, 255);
+  background-color: rgb(217, 83, 79);
+  border-color: rgb(212, 63, 58);
 }
