@@ -150,6 +150,7 @@ function ajaxCall() {
             // Log the resulting object
             console.log(response);
             var results = response.list;
+            var giphyPromises = [];
             for (var i = 0; i < 10; i++) {
                 console.log(results[i].main.temp)
                 var temp = results[i].main.temp;
@@ -163,30 +164,40 @@ function ajaxCall() {
                 console.log(randomDate);
                 console.log(convertedDate.format("MMM Do, YYYY hh:mm:ss a"))
                 var nextTime = convertedDate.format("MMM Do, YYYY hh:mm:ss a");
+                var giphyPromise = null;
                 if (currentUserScore >= 70 && weather !== "Rain"){
                     setCondition = "T-shirt and shorts";
-                    searchGiphy(nextTime, temp, weather, setCondition);
+                    giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                 }
                 else if (currentUserScore < 70 && weather !== "Rain"){
                     setCondition = "Wear a sweater";
-                    searchGiphy(nextTime, temp, weather, setCondition);
+                    giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                 }
                 else if (currentUserScore >= 70 && weather === "Rain"){
                     setCondition = "Bring a jacket";
-                    searchGiphy(nextTime, temp, weather, setCondition);
+                    giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                 }        
-                else if (currentUserScore < 70 && weather === "Rain"){
+                else {
                     setCondition = "Wear a coat and bring an umbrella";
-                    searchGiphy(nextTime, temp, weather, setCondition);
+                    giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                 }
+                giphyPromises.push(giphyPromise);
             };
+            Promise.all(giphyPromises)
+            .then (function (result){
+                console.log("In promise.all")
+                console.log(result)
+                for (var i = 0; i < 10; i++){
+                $("#weatherTest > tbody").append(result[i]);
+                }
+            })
         });
 };
 
     function searchGiphy(nextTime, temp, weather, setCondition){
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         weather + "&api_key=ooDPmDwDsJjgy2ei3vg18DmM4ZSisk1k&limit=1";
-        $.ajax({
+        return $.ajax({
         url: queryURL,
         method: "GET"
         }).then(function (response) {  // Storing an array of results in the results variable
@@ -200,15 +211,19 @@ function ajaxCall() {
             // result item
             gifImage.attr("src", results[0].images.fixed_height.url);
             var timeDisplay = $("<p>").text(nextTime);
+            timeDisplay.addClass("timeText");
             var tempDisplay = $("<p>").text(temp);
+            tempDisplay.addClass("tempText");
             var weatherDisplay = $("<p>").text(weather);
+            weatherDisplay.addClass("weatherText");
             var conditionDisplay = $("<p>").text(setCondition);
+            conditionDisplay.addClass("conditionText")
             gifDiv.append(timeDisplay);
             gifDiv.append(tempDisplay);
             gifDiv.append(weatherDisplay);
             gifDiv.append(conditionDisplay);
             gifDiv.append(gifImage);
-            $("#weather-results").append(gifDiv);
+            return gifDiv;
         });
     };
 });
