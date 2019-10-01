@@ -8,6 +8,18 @@
     <title>Weather-wear questionnaire!</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>  .container{ 
+            overflow: auto; 
+            white-space: nowrap; 
+          } 
+        
+          .gifs{ 
+            display:inline-block; 
+            text-align: center; 
+            margin-right: 15px; 
+          }
+    
+    </style>
 
 </head>
 
@@ -138,6 +150,7 @@
                             Your weather
                         </div>
                         <div class="card-body"></div>
+                        <div id="weatherTest"></div>
                         <table class="table table-sm table-hover" id='weather-table'>
                                 <thead>
                                     <tr>
@@ -155,7 +168,9 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-database.js"></script>
-    <script src="survey.js"></script>
+    <!-- <script src="survey.js"></script> -->
+    <script src="fake.js"></script>
+    <!-- <script src="newfake.js"></script> -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </body>
 
