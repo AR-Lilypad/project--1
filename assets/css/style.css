@@ -271,4 +271,80 @@ label {
   color: rgb(255, 255, 255);
   background-color: rgb(217, 83, 79);
   border-color: rgb(212, 63, 58);
+
+}
+  .timeText {
+
+    font-family: 'Raleway', san-serif;
+    color: #3f7e53;
+    font-size: 16px;
+    font-weight: bold;
+  
+}
+.tempText {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 16px;
+  font-weight: bold;
+
+}
+
+.weatherText {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.conditionText {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 16px;
+  font-weight: bold;
+ 
+}
+
+#birthday-display {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#zip-display {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#commute-display {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#run-display {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#age-display {
+
+  font-family: 'Raleway', san-serif;
+  color: #3f7e53;
+  font-size: 24px;
+  font-weight: bold;
 }
