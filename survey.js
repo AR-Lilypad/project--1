@@ -188,7 +188,7 @@ $(document).ready(function () {
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                     }        
                     else {
-                        setCondition = "Wear a coat and bring an umbrella";
+                        setCondition = "Wear a raincoat";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                     }
                     giphyPromises.push(giphyPromise);
