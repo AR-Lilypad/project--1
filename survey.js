@@ -176,7 +176,7 @@ $(document).ready(function () {
                     var nextTime = convertedDate.format("MMM Do h:mm a");
                     var giphyPromise = null;
                     if (currentUserScore >= 70 && weather !== "Rain"){
-                        setCondition = "T-shirt and shorts";
+                        setCondition = "Wear a T-shirt & shorts";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                     }
                     else if (currentUserScore < 70 && weather !== "Rain"){
