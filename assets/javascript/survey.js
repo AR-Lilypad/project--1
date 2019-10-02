@@ -1,6 +1,6 @@
-$(document).ready(function () {
-    $("#results").hide(); 
 
+$(document).ready(function () {
+    $("#results").hide();
     // Your web app's Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyDp6fG4do2N1EU37zD-pZRV0jatGPFZ_Qw",
@@ -14,10 +14,10 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    //   firebase.analytics();
-    
+
     // Create a variable to reference the database
     var database = firebase.database();
+
     // Initial Values
     var name = "";
     var email = "";
@@ -30,13 +30,12 @@ $(document).ready(function () {
     var userScore = 0;
     var currentUserScore = 0;
     var setCondition = "";
-    
+
     // Capture Button Click
-    $("#add-user").on("click", function (event) {
+    $("#submit-survey").on("click", function (event) {
         // Don't refresh the page!
         event.preventDefault();
-        $("#results").show(); 
-       
+        $("#results").show();
         $("#weather-table > tbody").empty();
         // name = $("#name-input").val().trim();
         // email = $("#email-input").val().trim();
@@ -65,14 +64,13 @@ $(document).ready(function () {
         ajaxCall();
         $("#survey").hide();
     });
-    
+
     // Firebase watcher + initial loader HINT: .on("value")
     database.ref("/surveys").on("value", function (snapshot) {
-    
+
         // Log everything that's coming out of snapshot
         console.log(snapshot.val());
         const surveys = snapshot.val();
-    
         Object.values(surveys).forEach(function (survey) {
             console.log(survey);
             console.log(survey.name);
@@ -82,47 +80,48 @@ $(document).ready(function () {
             console.log(survey.commute);
             console.log(survey.run);
             console.log(survey.comment);
-    
-            // $("#name-display").text("Name: " + survey.name);
-            // $("#email-display").text("Email: " + survey.email);
-            $("#birthday-display").text("Birthday: " + survey.birthday);
-            $("#zip-display").text("Zip code: " + survey.zip);
-            $("#commute-display").text("Commute: " + survey.commute);
-            $("#run-display").text("Tend to run hot or cold: " + survey.run);
-            
-            $("#retake").on("click", retake);
-            function retake() {
-                $("#survey").show()
-            }
-            // $("#comment-display").text("How did you hear about us: " + survey.comment);
+
             zip = survey.zip;
             birthday = survey.birthday;
             var birthdayFormat = "YYYY-MM-DD";
             var convertedBirthday = moment(birthday, birthdayFormat);
+            console.log(convertedBirthday.format("MM/DD/YY"))
+            userBirthday = convertedBirthday.format("MM/DD/YY")
             console.log(birthday)
             console.log(convertedBirthday.diff(moment(), "years"));
             age = Math.abs(convertedBirthday.diff(moment(), "years"));
+            $("#birthday-display").text("Birthday: " + userBirthday);
             $("#age-display").text("age: " + age);
-        
-        console.log(survey);
-        //Customization for user
-        if (age >= 50){
-            userScore = userScore - 2;
-        }
-        if (survey.commute === "Public transit"){
-            userScore = userScore - 2;
-        } else if (survey.commute === "Personal vehicle"){
-            userScore = userScore + 2;
-        } else if (survey.commute === "I walk"){
-            userScore = userScore - 2;
-        }
-        if (survey.run === "Cold"){
-            userScore = userScore - 2;
-        } else if (survey.run === "Hot"){
-            userScore = userScore + 2;
-        }
-    });
-    
+            $("#zip-display").text("Zip code: " + survey.zip);
+            $("#commute-display").text("Commute: " + survey.commute);
+            $("#run-display").text("Tend to run hot or cold: " + survey.run);
+            // $("#name-display").text("Name: " + survey.name);
+            // $("#email-display").text("Email: " + survey.email);
+            // $("#comment-display").text("How did you hear about us: " + survey.comment);
+
+            $("#retake").on("click", retake);
+            function retake() {
+                $("#survey").show()
+            }
+
+            //Customization for user
+            if (age >= 50) {
+                userScore = userScore - 2;
+            }
+            if (survey.commute === "Public transit") {
+                userScore = userScore - 2;
+            } else if (survey.commute === "Personal vehicle") {
+                userScore = userScore + 2;
+            } else if (survey.commute === "I walk") {
+                userScore = userScore - 2;
+            }
+            if (survey.run === "Cold") {
+                userScore = userScore - 2;
+            } else if (survey.run === "Hot") {
+                userScore = userScore + 2;
+            }
+        });
+
         Object.entries(surveys).forEach(function (survey) {
             console.log(survey);
             console.log(survey[0]);
@@ -135,7 +134,7 @@ $(document).ready(function () {
             console.log(survey[1].comment);
             console.log(zip)
         });
-        
+
     },
         function (errorObject) {
             console.log("Errors handled: " + errorObject.code);
@@ -158,7 +157,7 @@ $(document).ready(function () {
             .then(function (response) {
                 // Log the queryURL
                 console.log(queryURL);
-    
+
                 // Log the resulting object
                 console.log(response);
                 var results = response.list;
@@ -177,18 +176,18 @@ $(document).ready(function () {
                     console.log(convertedDate.format("MMM Do, YYYY hh:mm a"))
                     var nextTime = convertedDate.format("MMM Do h:mm a");
                     var giphyPromise = null;
-                    if (currentUserScore >= 70 && weather !== "Rain"){
+                    if (currentUserScore >= 70 && weather !== "Rain") {
                         setCondition = "Wear a T-shirt & shorts";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                     }
-                    else if (currentUserScore < 70 && weather !== "Rain"){
+                    else if (currentUserScore < 70 && weather !== "Rain") {
                         setCondition = "Wear a sweater";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
                     }
-                    else if (currentUserScore >= 70 && weather === "Rain"){
+                    else if (currentUserScore >= 70 && weather === "Rain") {
                         setCondition = "Bring a jacket";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
-                    }        
+                    }
                     else {
                         setCondition = "Wear a raincoat";
                         giphyPromise = searchGiphy(nextTime, temp, weather, setCondition);
@@ -196,37 +195,33 @@ $(document).ready(function () {
                     giphyPromises.push(giphyPromise);
                 };
                 Promise.all(giphyPromises)
-                .then (function (result){
-                    console.log("In promise.all")
-                    console.log(result)
-                    for (var i = 0; i < 10; i++){
-                    $("#weather-table > tbody").append(result[i]);
-                    }
-                })
-            });
-           
-    };
-    var gifURL;
-    
-        function searchGiphy(nextTime, temp, weather, setCondition){
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                    .then(function (result) {
+                        console.log("In promise.all")
+                        console.log(result)
+                        for (var i = 0; i < 10; i++) {
+                            $("#weather-table > tbody").append(result[i]);
+                        }
+                    })
+                });
+
+            };
+
+    function searchGiphy(nextTime, temp, weather, setCondition) {
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             weather + "&api_key=ooDPmDwDsJjgy2ei3vg18DmM4ZSisk1k&limit=10";
-            return $.ajax({
+        return $.ajax({
             url: queryURL,
             method: "GET"
-            }).then(function (response) {  // Storing an array of results in the results variable
-                var results = response.data;
-                // Creating a div for the gif
-                console.log(results)
-                console.log($("<div class=gifs>"))
-                for (var i = 0; i < results.length; i++) {
+        }).then(function (response) {  // Storing an array of results in the results variable
+            var results = response.data;
+            // Creating a div for the gif
+            console.log(results)
+            console.log($("<div class=gifs>"))
+            for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div class=gifs>");
-               
                 // Creating an image tag
                 var gifImage = $("<img>");
                 gifImage.addClass("gif-image");
-                gifURL=results[i].images.fixed_height.url;
-                console.log(gifURL)
                 gifImage.attr("src", results[i].images.fixed_height.url);
                 console.log(results[i].images.fixed_height.url)
                 var timeDisplay = $("<p>").text(nextTime);
@@ -243,7 +238,52 @@ $(document).ready(function () {
                 gifDiv.append(conditionDisplay);
                 gifDiv.append(gifImage);
                 return gifDiv;
-            }});
-        };
+            }
+        });
+    };
+
+
+    $('.input-group input[required]').on('keyup change', function () {
+        var $form = $(this).closest('form'),
+            $group = $(this).closest('.input-group'),
+            $addon = $group.find('.input-group-addon'),
+            $icon = $addon.find('span'),
+            state = false;
+
+        if (!$group.data('validate')) {
+            state = $(this).val() ? true : false;
+        } else if ($group.data('validate') == "email") {
+            state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+        } else if ($group.data('validate') == "first-name") {
+            state = /^([a-zA-Z_\.\-])+$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "last-name") {
+            state = /^([a-zA-Z_\.\-])+$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "password") {
+            state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())
+            console.log(this)
+        }
+        else if ($group.data('validate') == "confirm-password") {
+            state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())
+        }
+
+        if (state) {
+            $addon.removeClass('danger');
+            $addon.addClass('success');
+            $icon.attr('class', 'glyphicon glyphicon-ok');
+        } else {
+            $addon.removeClass('success');
+            $addon.addClass('danger');
+            $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+            $form.find('[type="submit"]').prop('disabled', false);
+        } else {
+            $form.find('[type="submit"]').prop('disabled', true);
+        }
     });
-    
+
+    $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
+});

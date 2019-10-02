@@ -16,13 +16,8 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 4000); // Change image every 3 seconds
 }
-
-$(".hamburger").click(function(){
-    $("#nav").toggle();   
-       
-   });     
-
-   $(document).ready(function() {
+ 
+ $(document).ready(function() {
     $('.input-group input[required]').on('keyup change', function() {
     	var $form = $(this).closest('form'),
             $group = $(this).closest('.input-group'),
