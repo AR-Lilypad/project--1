@@ -1,6 +1,3 @@
-
-# project--1
-=======
 # project--1 Team Project
 
 Project design Title: WEATHER WEAR
