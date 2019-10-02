@@ -20,7 +20,7 @@ function showSlides() {
  $(document).ready(function() {
     $('.input-group input[required]').on('keyup change', function() {
     	var $form = $(this).closest('form'),
-            $group = $(this).closest('.input-group'),
+      $group = $(this).closest('.input-group'),
 			$addon = $group.find('.input-group-addon'),
 			$icon = $addon.find('span'),
 			state = false;
@@ -37,7 +37,6 @@ function showSlides() {
     }
     else if ($group.data('validate') == "password") {
       state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())
-      console.log(this)
     } 
     else if ($group.data('validate') == "confirm-password") {
 			state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())

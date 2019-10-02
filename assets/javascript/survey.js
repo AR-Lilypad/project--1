@@ -140,7 +140,7 @@ $(document).ready(function () {
             console.log("Errors handled: " + errorObject.code);
         }
     );
-    console.log(database)
+    
     function ajaxCall() {
         console.log(zip)
         // This is our API key
@@ -262,7 +262,6 @@ $(document).ready(function () {
         }
         else if ($group.data('validate') == "password") {
             state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())
-            console.log(this)
         }
         else if ($group.data('validate') == "confirm-password") {
             state = /^([a-zA-Z0-9_\.\-])+$/.test($(this).val())
