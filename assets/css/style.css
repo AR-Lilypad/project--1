@@ -138,8 +138,9 @@ img {
 
     @font-face {
       font-family: 'bootleregular';
-      src: url("../../assets/fonts/'bootle__-webfont.woff2") format('woff2'),
-           url("../../assets/fonts/bootle__-webfont.woff") format('woff');
+      src: url("../../assets/fonts/bootle__-webfont.woff2") format('woff2'),
+           url("../../assets/fonts/bootle__-webfont.woff") format('woff'),
+           url("../../assets/fonts/BOOTLE__.TTF") format('TTF');
       font-weight: normal;
       font-style: normal;
    }     

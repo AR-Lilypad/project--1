@@ -89,6 +89,7 @@ $(document).ready(function () {
             $("#zip-display").text("Zip code: " + survey.zip);
             $("#commute-display").text("Commute: " + survey.commute);
             $("#run-display").text("Tend to run hot or cold: " + survey.run);
+            
             $("#retake").on("click", retake);
             function retake() {
                 $("#survey").show()
@@ -101,6 +102,7 @@ $(document).ready(function () {
             console.log(birthday)
             console.log(convertedBirthday.diff(moment(), "years"));
             age = Math.abs(convertedBirthday.diff(moment(), "years"));
+            $("#age-display").text("age: " + age);
         
         console.log(survey);
         //Customization for user
